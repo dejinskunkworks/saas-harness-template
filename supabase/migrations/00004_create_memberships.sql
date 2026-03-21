@@ -5,8 +5,7 @@ CREATE TABLE public.memberships (
   tenant_id uuid NOT NULL REFERENCES public.tenants(id) ON DELETE CASCADE,
   organization_id uuid REFERENCES public.organizations(id) ON DELETE SET NULL,
   role text NOT NULL CHECK (role IN (
-    'system_admin', 'practice_admin', 'company_secretary',
-    'director', 'founder_owner', 'external_advisor', 'agent_developer'
+    'system_admin', 'org_admin', 'member', 'viewer'
   )),
   status text NOT NULL DEFAULT 'active' CHECK (status IN ('active', 'suspended', 'expired')),
   starts_at timestamptz NOT NULL DEFAULT now(),
@@ -32,7 +31,7 @@ CREATE POLICY "Admins can manage memberships"
       SELECT m.tenant_id FROM public.memberships m
       WHERE m.user_id = auth.uid()
       AND m.status = 'active'
-      AND m.role IN ('system_admin', 'practice_admin')
+      AND m.role IN ('system_admin', 'org_admin')
     )
   );
 

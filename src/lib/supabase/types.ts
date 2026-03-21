@@ -68,7 +68,7 @@ export type Database = {
           user_id: string;
           tenant_id: string;
           organization_id: string | null;
-          role: string;
+          role: "system_admin" | "org_admin" | "member" | "viewer";
           status: "active" | "suspended" | "expired";
           starts_at: string;
           ends_at: string | null;

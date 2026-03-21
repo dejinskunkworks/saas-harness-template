@@ -17,7 +17,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
     <div className="min-h-screen bg-background">
       <header className="border-b px-6 py-4">
         <div className="flex items-center justify-between">
-          <h1 className="text-lg font-semibold">Sekretari</h1>
+          <h1 className="text-lg font-semibold">Dashboard</h1>
           <div className="flex items-center gap-4">
             <span className="text-sm text-muted-foreground">{user.email}</span>
             <form action="/api/auth/sign-out" method="POST">

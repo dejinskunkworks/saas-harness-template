@@ -6,8 +6,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Sekretari",
-  description: "AI-Native Governance Operating System",
+  title: "SaaS Harness Template",
+  description: "AI-Native SaaS Starter",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

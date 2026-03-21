@@ -7,32 +7,32 @@ export default function DashboardPage() {
       <div className="grid gap-4 md:grid-cols-3">
         <Card>
           <CardHeader>
-            <CardTitle>Compliance</CardTitle>
-            <CardDescription>Upcoming deadlines</CardDescription>
+            <CardTitle>Overview</CardTitle>
+            <CardDescription>Key metrics</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-3xl font-bold">&mdash;</p>
-            <p className="text-sm text-muted-foreground">No entities onboarded yet</p>
+            <p className="text-sm text-muted-foreground">Add your metrics here</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Meetings</CardTitle>
-            <CardDescription>This month</CardDescription>
+            <CardTitle>Activity</CardTitle>
+            <CardDescription>Recent events</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-3xl font-bold">&mdash;</p>
-            <p className="text-sm text-muted-foreground">No meetings scheduled</p>
+            <p className="text-sm text-muted-foreground">Add your activity feed here</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Filings</CardTitle>
-            <CardDescription>Pending review</CardDescription>
+            <CardTitle>Tasks</CardTitle>
+            <CardDescription>Pending items</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-3xl font-bold">&mdash;</p>
-            <p className="text-sm text-muted-foreground">No filings in progress</p>
+            <p className="text-sm text-muted-foreground">Add your task list here</p>
           </CardContent>
         </Card>
       </div>

@@ -9,12 +9,12 @@ export default function Home() {
     <main className="flex min-h-screen items-center justify-center p-8">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle className="text-2xl">Sekretari</CardTitle>
-          <CardDescription>AI-Native Governance Operating System</CardDescription>
+          <CardTitle className="text-2xl">SaaS Harness Template</CardTitle>
+          <CardDescription>AI-Native SaaS Starter</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <p className="text-sm text-muted-foreground">
-            Compliance calendar. AI minutes. Auto-filing with register sync.
+            Multi-tenant SaaS foundation with harness engineering.
           </p>
           <div className="flex gap-2">
             <Link

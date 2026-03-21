@@ -12,7 +12,7 @@ describe("resolveAuthContext", () => {
       id: "m-001",
       tenant_id: "t-001",
       organization_id: null,
-      role: ROLES.COMPANY_SECRETARY,
+      role: ROLES.MEMBER,
       status: "active",
     };
 
@@ -57,7 +57,7 @@ describe("resolveAuthContext", () => {
       email: "test@example.com",
       tenantId: "t-001",
       organizationId: null,
-      role: ROLES.COMPANY_SECRETARY,
+      role: ROLES.MEMBER,
     });
   });
 

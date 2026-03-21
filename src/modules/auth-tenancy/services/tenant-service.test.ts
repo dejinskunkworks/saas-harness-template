@@ -39,7 +39,7 @@ describe("createTenantWithOwner", () => {
       user_id: "u-001",
       tenant_id: "t-001",
       organization_id: null,
-      role: ROLES.PRACTICE_ADMIN,
+      role: ROLES.ORG_ADMIN,
       status: "active",
     };
 

@@ -30,7 +30,7 @@ export function generateSlug(name: string): string {
 }
 
 /**
- * Create a new tenant and assign the creating user as practice_admin.
+ * Create a new tenant and assign the creating user as org_admin.
  * Returns both the tenant and the membership.
  */
 export async function createTenantWithOwner(
@@ -68,7 +68,7 @@ export async function createTenantWithOwner(
       user_id: input.userId,
       tenant_id: tenant.id,
       organization_id: null,
-      role: ROLES.PRACTICE_ADMIN,
+      role: ROLES.ORG_ADMIN,
       status: "active",
       starts_at: new Date().toISOString(),
       ends_at: null,

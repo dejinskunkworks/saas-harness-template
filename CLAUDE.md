@@ -1,29 +1,30 @@
-# CLAUDE.md — Agent Map for Sekretari
+# CLAUDE.md — Agent Map for SaaS Harness Template
 
 ## What is this?
 
-Sekretari is an AI-native governance operating system for company secretaries.
-Kenya (BRS) first, UK (Companies House) second. Multi-tenant, multi-lingual, multi-user.
+Multi-tenant SaaS starter with harness engineering. Next.js 15 modular monolith + Supabase.
+Auth, tenancy, audit, and module boundary enforcement out of the box.
 
 ## Quick start
 
 ```bash
-pnpm install
-pnpm dev          # http://localhost:3000
-pnpm test         # run all tests
-pnpm lint         # lint with harness rules
-pnpm build        # production build
-pnpm tsc --noEmit # type check
+./setup.sh            # rename project, install deps
+pnpm dev              # http://localhost:3000
+pnpm test             # run all tests
+pnpm lint             # lint with harness rules
+pnpm build            # production build
+pnpm tsc --noEmit     # type check
 ```
 
-## Architecture
+## Customization checklist
 
-Modular monolith (Next.js) + AI Worker service (separate). See:
-- `/ARCHITECTURE.md` — full system architecture
-- `/DOMAIN_MODEL.md` — all domain entities and relationships
-- `/ROADMAP.md` — milestone sequence and delivery principles
-- `/AGENTS.md` — engineering principles, security rules, coding standards
-- `/docs/plans/` — design docs and implementation plans
+1. Run `./setup.sh` to rename the project
+2. Edit `src/lib/constants.ts` — add your roles, regions, domain constants
+3. Update `supabase/migrations/00004_create_memberships.sql` — match your roles
+4. Update `src/lib/supabase/types.ts` — match your DB schema
+5. Add domain modules in `src/modules/` — follow `example-module` pattern
+6. Update `src/test/seed/demo-tenant.ts` — add realistic seed data
+7. Set up Supabase project and fill in `.env.local`
 
 ## Module structure
 
@@ -35,8 +36,7 @@ Modules live in `src/modules/<name>/`. Each module has:
 - `components/` — UI components
 - `actions/` — Next.js server actions
 
-Modules: auth-tenancy, entities, registers, compliance, filings,
-meetings-governance, documents, agents, platform-admin, audit, notifications
+Included modules: auth-tenancy, audit, notifications, example-module
 
 ## Rules
 
@@ -53,17 +53,11 @@ meetings-governance, documents, agents, platform-admin, audit, notifications
 - Unit tests: `src/modules/*/services/*.test.ts`
 - Component tests: `src/modules/*/components/*.test.tsx`
 - Test helpers: `src/test/helpers.ts`
-- Run: `pnpm test` or `pnpm vitest run src/modules/auth-tenancy/`
+- Run: `pnpm test` or `pnpm vitest run src/modules/example-module/`
 
 ## When something fails
 
 If CI fails or a lint rule blocks you:
 1. Read the error message — harness lint rules include fix instructions
-2. Check the referenced doc (ARCHITECTURE.md, AGENTS.md, etc.)
-3. Fix the root cause, don't disable the rule
-4. If the rule is wrong, update this file and the rule together
-
-## Current milestone
-
-M1 — Auth & Tenancy complete. Next: M2 (Entity management, registers).
-See `/ROADMAP.md` for full sequence.
+2. Fix the root cause, don't disable the rule
+3. If the rule is wrong, update this file and the rule together

@@ -2,30 +2,29 @@
  * Application-wide constants.
  *
  * HARNESS RULE: No magic strings. Define constants here or in module-specific types.
+ *
+ * CUSTOMIZE: This is the first file to edit for your project.
+ * Replace REGIONS, ROLES, and add your own domain constants.
  */
 
-/** Supported jurisdictions */
-export const JURISDICTIONS = {
-  KE: "KE",
-  GB: "GB",
+/** Supported regions — replace with your jurisdictions/locales */
+export const REGIONS = {
+  DEFAULT: "DEFAULT",
 } as const;
 
-export type Jurisdiction = (typeof JURISDICTIONS)[keyof typeof JURISDICTIONS];
+export type Region = (typeof REGIONS)[keyof typeof REGIONS];
 
-/** User roles */
+/** User roles — customize for your domain */
 export const ROLES = {
   SYSTEM_ADMIN: "system_admin",
-  PRACTICE_ADMIN: "practice_admin",
-  COMPANY_SECRETARY: "company_secretary",
-  DIRECTOR: "director",
-  FOUNDER_OWNER: "founder_owner",
-  EXTERNAL_ADVISOR: "external_advisor",
-  AGENT_DEVELOPER: "agent_developer",
+  ORG_ADMIN: "org_admin",
+  MEMBER: "member",
+  VIEWER: "viewer",
 } as const;
 
 export type Role = (typeof ROLES)[keyof typeof ROLES];
 
-/** Agent action tiers */
+/** Agent action tiers — universal for audit trail */
 export const ACTION_TIERS = {
   READ: "read",
   ANALYZE: "analyze",
@@ -37,13 +36,3 @@ export const ACTION_TIERS = {
 } as const;
 
 export type ActionTier = (typeof ACTION_TIERS)[keyof typeof ACTION_TIERS];
-
-/** Entity types */
-export const ENTITY_TYPES = {
-  PRIVATE_LIMITED: "private_limited",
-  PUBLIC_LIMITED: "public_limited",
-  STATE_CORPORATION: "state_corporation",
-  NONPROFIT: "nonprofit",
-} as const;
-
-export type EntityType = (typeof ENTITY_TYPES)[keyof typeof ENTITY_TYPES];

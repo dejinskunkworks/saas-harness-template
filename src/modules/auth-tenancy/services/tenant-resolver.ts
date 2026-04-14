@@ -47,7 +47,8 @@ export async function resolveAuthContext(
     ? query.eq("tenant_id", tenantId)
     : query.order("created_at", { ascending: true }).limit(1);
 
-  const { data: membership, error: membershipError } = await membershipQuery.single();
+  const { data: membership, error: membershipError } =
+    await membershipQuery.single();
 
   if (membershipError || !membership) return null;
 

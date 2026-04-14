@@ -49,7 +49,9 @@ describe("createTenantWithOwner", () => {
           return {
             insert: vi.fn().mockReturnValue({
               select: vi.fn().mockReturnValue({
-                single: vi.fn().mockResolvedValue({ data: mockTenant, error: null }),
+                single: vi
+                  .fn()
+                  .mockResolvedValue({ data: mockTenant, error: null }),
               }),
             }),
           };
@@ -58,7 +60,9 @@ describe("createTenantWithOwner", () => {
           return {
             insert: vi.fn().mockReturnValue({
               select: vi.fn().mockReturnValue({
-                single: vi.fn().mockResolvedValue({ data: mockMembership, error: null }),
+                single: vi
+                  .fn()
+                  .mockResolvedValue({ data: mockMembership, error: null }),
               }),
             }),
           };

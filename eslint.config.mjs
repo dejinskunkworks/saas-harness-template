@@ -24,15 +24,27 @@ export default tseslint.config(
                 "HARNESS FIX: Do not import internal files from another module. " +
                 "Import from the module's public API instead: " +
                 "import { thing } from '@/modules/other-module'. " +
-                "If the export doesn't exist, add it to that module's index.ts.",
+                "If the export doesn't exist, add it to that module's index.ts. " +
+                "See ARCHITECTURE.md section 'Module boundaries'.",
             },
             {
               target: "./src/app/**/*.{ts,tsx}",
               from: "./src/modules/*/services/**",
               message:
                 "HARNESS FIX: UI components must not import domain services directly. " +
-                "Use server actions or API routes to call domain logic. " +
-                "See ARCHITECTURE.md section 'Separation of concerns'.",
+                "Use server actions (src/modules/*/actions/) or route handlers to call domain logic. " +
+                "See ARCHITECTURE.md section 'UI ↔ domain separation'.",
+            },
+            {
+              // Cross-cutting concerns must enter through src/lib/providers.
+              // Providers themselves must not depend on modules (forward-only edge).
+              target: "./src/lib/providers/**/*.{ts,tsx}",
+              from: "./src/modules/**",
+              message:
+                "HARNESS FIX: src/lib/providers is the cross-cutting entry point — it must not " +
+                "depend on any module. If a provider needs module behavior, invert the dependency: " +
+                "expose a provider interface and let the module call it. " +
+                "See ARCHITECTURE.md section 'Cross-cutting concerns'.",
             },
           ],
         },
@@ -47,7 +59,11 @@ export default tseslint.config(
           varsIgnorePattern: "^_",
         },
       ],
-      "no-console": "warn",
+
+      // -- Structured logging only (HARNESS: MANIFESTO §7 — rules that matter are errors) --
+      // console.* is banned in application code. The logger in src/lib/logger allows
+      // controlled console usage internally via `eslint-disable-next-line`.
+      "no-console": "error",
 
       // -- Import hygiene --
       "import-x/order": [
@@ -75,10 +91,19 @@ export default tseslint.config(
     },
   },
   {
+    // E2E tests run in Playwright's Node context; allow console for test diagnostics.
+    files: ["e2e/**/*.{ts,tsx}"],
+    rules: {
+      "no-console": "off",
+    },
+  },
+  {
     ignores: [
       ".next/**",
       "node_modules/**",
       "coverage/**",
+      "playwright-report/**",
+      "test-results/**",
       "*.config.*",
     ],
   }

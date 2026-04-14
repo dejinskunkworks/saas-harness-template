@@ -12,5 +12,8 @@ import { publicEnv } from "@/lib/env";
 import type { Database } from "./types";
 
 export function createBrowserClient() {
-  return createClient<Database>(publicEnv.supabaseUrl, publicEnv.supabaseAnonKey());
+  return createClient<Database>(
+    publicEnv.supabaseUrl,
+    publicEnv.supabaseAnonKey(),
+  );
 }

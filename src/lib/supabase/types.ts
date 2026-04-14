@@ -59,7 +59,9 @@ export type Database = {
           Database["public"]["Tables"]["organizations"]["Row"],
           "id" | "created_at" | "updated_at"
         >;
-        Update: Partial<Database["public"]["Tables"]["organizations"]["Insert"]>;
+        Update: Partial<
+          Database["public"]["Tables"]["organizations"]["Insert"]
+        >;
         Relationships: [];
       };
       memberships: {
@@ -93,8 +95,13 @@ export type Database = {
           ends_at: string | null;
           created_at: string;
         };
-        Insert: Omit<Database["public"]["Tables"]["entity_access"]["Row"], "id" | "created_at">;
-        Update: Partial<Database["public"]["Tables"]["entity_access"]["Insert"]>;
+        Insert: Omit<
+          Database["public"]["Tables"]["entity_access"]["Row"],
+          "id" | "created_at"
+        >;
+        Update: Partial<
+          Database["public"]["Tables"]["entity_access"]["Insert"]
+        >;
         Relationships: [];
       };
       audit_events: {
@@ -116,7 +123,10 @@ export type Database = {
           metadata: Record<string, unknown> | null;
           created_at: string;
         };
-        Insert: Omit<Database["public"]["Tables"]["audit_events"]["Row"], "id" | "created_at">;
+        Insert: Omit<
+          Database["public"]["Tables"]["audit_events"]["Row"],
+          "id" | "created_at"
+        >;
         Update: Record<string, unknown>;
         Relationships: [];
       };

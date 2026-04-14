@@ -40,6 +40,11 @@ supabase/.temp/
 # test coverage
 coverage/
 
+# Playwright
+playwright-report/
+test-results/
+playwright/.cache/
+
 # turbo
 .turbo
 

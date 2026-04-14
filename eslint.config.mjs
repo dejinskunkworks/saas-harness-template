@@ -60,7 +60,7 @@ export default tseslint.config(
         },
       ],
 
-      // -- Structured logging only (HARNESS: MANIFESTO §7 — rules that matter are errors) --
+      // -- Structured logging only (HARNESS: MANIFESTO §9 — rules that matter are errors) --
       // console.* is banned in application code. The logger in src/lib/logger allows
       // controlled console usage internally via `eslint-disable-next-line`.
       "no-console": "error",

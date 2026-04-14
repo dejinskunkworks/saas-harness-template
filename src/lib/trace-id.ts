@@ -1,7 +1,7 @@
 /**
  * Edge-safe trace id generator.
  *
- * Kept in a dedicated file so it can be imported from Next.js middleware
+ * Kept in a dedicated file so it can be imported from src/proxy.ts
  * (which runs on the edge runtime) without pulling in node:async_hooks.
  */
 export function newTraceId(): string {

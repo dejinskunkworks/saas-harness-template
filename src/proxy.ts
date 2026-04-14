@@ -3,7 +3,7 @@ import { type NextRequest } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
 import { TRACE_HEADER, newTraceId } from "@/lib/trace-id";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   // Assign or reuse a trace id for every request. Threaded to server code
   // via the request header and echoed on the response for client correlation.
   const traceId = request.headers.get(TRACE_HEADER) ?? newTraceId();

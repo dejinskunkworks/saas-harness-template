@@ -3,7 +3,7 @@ import { defineConfig, devices } from "@playwright/test";
 /**
  * Playwright smoke harness.
  *
- * HARNESS PURPOSE (MANIFESTO §9): agents must be able to drive the running app
+ * HARNESS PURPOSE (MANIFESTO §11): agents must be able to drive the running app
  * to reproduce bugs and validate fixes. This config boots the dev server, runs
  * headless Chromium, and emits JSON + HTML reports that agents can parse.
  */

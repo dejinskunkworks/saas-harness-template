@@ -46,7 +46,7 @@ One deployable unit. Domain logic lives in `src/modules/`, each module a self-co
 
 - Anything cross-cutting (auth, telemetry, feature flags, external integrations) enters through `src/lib/providers/`.
 - Modules depend on providers; providers do **not** depend on modules.
-- This is the single explicit edge for system-wide concerns (MANIFESTO §6).
+- This is the single explicit edge for system-wide concerns (MANIFESTO §8).
 
 ### Forward-only layering within a module
 
@@ -101,7 +101,7 @@ Agents must run `pnpm test` and, for UI changes, `pnpm test:e2e` before marking 
 - Single Next.js app on any Node host (Vercel, Fly, Render, self-hosted).
 - Supabase project per environment.
 - CI runs lint, typecheck, unit, build on every push.
-- No microservices until the monolith demonstrably hurts. Deferred (MANIFESTO §17).
+- No microservices until the monolith demonstrably hurts. Deferred (MANIFESTO §20).
 
 ## What is deferred
 

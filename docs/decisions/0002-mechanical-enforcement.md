@@ -5,7 +5,7 @@
 
 ## Context
 
-[MANIFESTO §7](../../MANIFESTO.md) requires that rules that matter be enforced mechanically, not left as prose. This ADR records how that principle is instantiated in this repo.
+[MANIFESTO §9](../../MANIFESTO.md) requires that rules that matter be enforced mechanically, not left as prose. This ADR records how that principle is instantiated in this repo.
 
 ## Decision
 
@@ -18,7 +18,7 @@ Every invariant in [ARCHITECTURE.md](../../ARCHITECTURE.md) and [DOMAIN_MODEL.md
 
 Lint error messages embed a `HARNESS FIX:` line so agents hitting the rule receive the remediation path in-context.
 
-`no-console` is an **error**, not a warning (MANIFESTO §7: rules that matter are errors).
+`no-console` is an **error**, not a warning (MANIFESTO §9: rules that matter are errors).
 
 ## Consequences
 

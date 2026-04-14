@@ -1,15 +1,15 @@
 /**
  * Server-side trace context for structured logging.
  *
- * The middleware assigns a trace id to every request (x-trace-id header).
+ * The proxy (src/proxy.ts) assigns a trace id to every request (x-trace-id header).
  * Server code (route handlers, server actions) wraps work in `runWithTrace`
  * so the logger can pick up the current trace id without plumbing it through
  * every function signature.
  *
- * HARNESS RULE (MANIFESTO §16): every log line for a request carries its trace id.
+ * HARNESS RULE (MANIFESTO §19): every log line for a request carries its trace id.
  *
  * This file imports node:async_hooks and is therefore NOT edge-safe.
- * Do not import from Next.js middleware. Use `@/lib/trace-id` for the id generator.
+ * Do not import from src/proxy.ts. Use `@/lib/trace-id` for the id generator.
  */
 import { AsyncLocalStorage } from "node:async_hooks";
 

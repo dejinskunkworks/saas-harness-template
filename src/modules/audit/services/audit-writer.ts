@@ -15,7 +15,9 @@ import type { CreateAuditEventInput } from "../types/audit-event";
 type AuditEventInsert = Database["public"]["Tables"]["audit_events"]["Insert"];
 
 /** Map camelCase input to snake_case DB row */
-export function buildAuditInsert(input: CreateAuditEventInput): AuditEventInsert {
+export function buildAuditInsert(
+  input: CreateAuditEventInput,
+): AuditEventInsert {
   return {
     tenant_id: input.tenantId,
     entity_id: input.entityId ?? null,
@@ -41,7 +43,11 @@ export async function createAuditEvent(
 ) {
   const row = buildAuditInsert(input);
 
-  const { data, error } = await supabase.from("audit_events").insert(row).select().single();
+  const { data, error } = await supabase
+    .from("audit_events")
+    .insert(row)
+    .select()
+    .single();
 
   if (error) {
     logger.error("Failed to write audit event", {

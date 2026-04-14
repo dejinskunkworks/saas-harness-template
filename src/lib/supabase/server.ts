@@ -15,18 +15,22 @@ import type { Database } from "./types";
 export async function createServerClient() {
   const cookieStore = await cookies();
 
-  return createClient<Database>(publicEnv.supabaseUrl, publicEnv.supabaseAnonKey(), {
-    cookies: {
-      getAll() {
-        return cookieStore.getAll();
-      },
-      setAll(cookiesToSet) {
-        cookiesToSet.forEach(({ name, value, options }) => {
-          cookieStore.set(name, value, options);
-        });
+  return createClient<Database>(
+    publicEnv.supabaseUrl,
+    publicEnv.supabaseAnonKey(),
+    {
+      cookies: {
+        getAll() {
+          return cookieStore.getAll();
+        },
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value, options }) => {
+            cookieStore.set(name, value, options);
+          });
+        },
       },
     },
-  });
+  );
 }
 
 export { type Database } from "./types";

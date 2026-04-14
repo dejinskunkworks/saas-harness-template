@@ -1,4 +1,10 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export default function DashboardPage() {
   return (
@@ -12,7 +18,9 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <p className="text-3xl font-bold">&mdash;</p>
-            <p className="text-sm text-muted-foreground">Add your metrics here</p>
+            <p className="text-sm text-muted-foreground">
+              Add your metrics here
+            </p>
           </CardContent>
         </Card>
         <Card>
@@ -22,7 +30,9 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <p className="text-3xl font-bold">&mdash;</p>
-            <p className="text-sm text-muted-foreground">Add your activity feed here</p>
+            <p className="text-sm text-muted-foreground">
+              Add your activity feed here
+            </p>
           </CardContent>
         </Card>
         <Card>
@@ -32,7 +42,9 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <p className="text-3xl font-bold">&mdash;</p>
-            <p className="text-sm text-muted-foreground">Add your task list here</p>
+            <p className="text-sm text-muted-foreground">
+              Add your task list here
+            </p>
           </CardContent>
         </Card>
       </div>

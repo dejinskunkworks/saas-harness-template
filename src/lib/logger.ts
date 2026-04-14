@@ -1,9 +1,15 @@
 /**
- * Structured logger for Sekretari.
+ * Structured logger.
  *
- * HARNESS RULE: Use this instead of console.log.
- * All log entries include context for observability.
+ * HARNESS RULE: Use this instead of console.* in application code.
+ * `no-console` is an ESLint error — see eslint.config.mjs.
+ *
+ * When called from server code wrapped in `runWithTrace` (see src/lib/trace-context),
+ * the active trace/tenant/user context is automatically merged into every log line.
+ * Explicit context passed to the logger call takes precedence over the ambient context.
  */
+
+import { getTraceContext } from "./trace-context";
 
 type LogLevel = "debug" | "info" | "warn" | "error";
 
@@ -17,11 +23,13 @@ interface LogContext {
 }
 
 function log(level: LogLevel, message: string, context?: LogContext): void {
+  const ambient = getTraceContext();
   const entry = {
     level,
     message,
     timestamp: new Date().toISOString(),
-    ...context,
+    ...(ambient ?? {}),
+    ...(context ?? {}),
   };
 
   if (level === "error") {
@@ -32,8 +40,12 @@ function log(level: LogLevel, message: string, context?: LogContext): void {
 }
 
 export const logger = {
-  debug: (message: string, context?: LogContext) => log("debug", message, context),
-  info: (message: string, context?: LogContext) => log("info", message, context),
-  warn: (message: string, context?: LogContext) => log("warn", message, context),
-  error: (message: string, context?: LogContext) => log("error", message, context),
+  debug: (message: string, context?: LogContext) =>
+    log("debug", message, context),
+  info: (message: string, context?: LogContext) =>
+    log("info", message, context),
+  warn: (message: string, context?: LogContext) =>
+    log("warn", message, context),
+  error: (message: string, context?: LogContext) =>
+    log("error", message, context),
 };

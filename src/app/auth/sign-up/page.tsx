@@ -1,5 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { signUp } from "@/modules/auth-tenancy/actions/auth-actions";
 
 export default async function SignUpPage({
@@ -18,7 +24,9 @@ export default async function SignUpPage({
         </CardHeader>
         <CardContent>
           {params.error && (
-            <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{params.error}</div>
+            <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">
+              {params.error}
+            </div>
           )}
           <form className="space-y-4">
             <div>

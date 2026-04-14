@@ -18,14 +18,18 @@ describe("resolveAuthContext", () => {
 
     const mockSupabase = {
       auth: {
-        getUser: vi.fn().mockResolvedValue({ data: { user: mockUser }, error: null }),
+        getUser: vi
+          .fn()
+          .mockResolvedValue({ data: { user: mockUser }, error: null }),
       },
       from: vi.fn().mockImplementation((table: string) => {
         if (table === "users") {
           return {
             select: vi.fn().mockReturnValue({
               eq: vi.fn().mockReturnValue({
-                single: vi.fn().mockResolvedValue({ data: mockUserRow, error: null }),
+                single: vi
+                  .fn()
+                  .mockResolvedValue({ data: mockUserRow, error: null }),
               }),
             }),
           };
@@ -37,7 +41,10 @@ describe("resolveAuthContext", () => {
                 eq: vi.fn().mockReturnValue({
                   order: vi.fn().mockReturnValue({
                     limit: vi.fn().mockReturnValue({
-                      single: vi.fn().mockResolvedValue({ data: mockMembership, error: null }),
+                      single: vi.fn().mockResolvedValue({
+                        data: mockMembership,
+                        error: null,
+                      }),
                     }),
                   }),
                 }),
@@ -64,7 +71,9 @@ describe("resolveAuthContext", () => {
   it("returns null when no authenticated user", async () => {
     const mockSupabase = {
       auth: {
-        getUser: vi.fn().mockResolvedValue({ data: { user: null }, error: null }),
+        getUser: vi
+          .fn()
+          .mockResolvedValue({ data: { user: null }, error: null }),
       },
     };
 

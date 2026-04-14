@@ -62,7 +62,7 @@ src/
 │   ├── audit/              # Immutable audit event log
 │   ├── notifications/      # Empty shell — ready for your implementation
 │   └── example-module/     # Pattern demo — copy this for new modules
-├── middleware.ts            # Auth session refresh
+├── proxy.ts                # Auth session refresh + trace-id stamping (Next.js 16 proxy convention)
 └── test/                   # Test setup, helpers, seed data
 ```
 

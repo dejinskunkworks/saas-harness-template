@@ -17,14 +17,11 @@ Each entry:
 
 ## Active debt
 
-### [TD-001] Migrate `src/middleware.ts` → `src/proxy.ts`
-
-- **Owner:** infra
-- **Impact:** legibility — Next.js 16 deprecation warning on every build. Will become an error in a future release.
-- **Effort:** S
-- **Proposed fix:** Rename file and update the `proxy()` export per https://nextjs.org/docs/messages/middleware-to-proxy. Verify trace-id stamping still works.
-- **Added:** 2026-04-14
+_None tracked yet. Add entries as debt is discovered._
 
 ## Recently paid
 
-_Entries move here when resolved, with the PR link, then get cleared out quarterly._
+### [TD-001] Migrate `src/middleware.ts` → `src/proxy.ts`
+
+- **Resolved:** 2026-04-14
+- **Fix:** File renamed to `src/proxy.ts` and exported function renamed to `proxy()` per Next.js 16 convention. Trace-id stamping and Supabase session refresh verified via Playwright smoke. References in README and `src/lib/supabase/middleware.ts` docstring updated.

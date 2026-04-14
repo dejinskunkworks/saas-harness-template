@@ -2,7 +2,7 @@
  * Supabase middleware client for Next.js.
  *
  * Refreshes the auth session on every request.
- * Must be used in Next.js middleware (src/middleware.ts).
+ * Must be used in the Next.js proxy file (src/proxy.ts).
  */
 
 import { createServerClient } from "@supabase/ssr";
